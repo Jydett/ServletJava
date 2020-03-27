@@ -1,4 +1,4 @@
-package fr.polytech.jydet.td5;
+package fr.polytech.jydet.td5.controller;
 
 import fr.polytech.jydet.td5.beans.User;
 import fr.polytech.jydet.td5.exception.ServiceException;
@@ -16,7 +16,7 @@ import java.io.IOException;
         name = "Loan",
         urlPatterns = "/libraryLoan"
 )
-public class LoanController extends HttpServlet {
+public class LoanController extends HttpServlet {//TODO filter
 
     private LoanService loanService;
 

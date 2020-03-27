@@ -1,4 +1,4 @@
-package fr.polytech.jydet.td5;
+package fr.polytech.jydet.td5.controller;
 
 import fr.polytech.jydet.td5.exception.ServiceException;
 import fr.polytech.jydet.td5.initializer.ControllerInitializer;

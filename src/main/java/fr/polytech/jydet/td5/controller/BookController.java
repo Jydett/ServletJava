@@ -1,4 +1,4 @@
-package fr.polytech.jydet.td5;
+package fr.polytech.jydet.td5.controller;
 
 import fr.polytech.jydet.td5.beans.Book;
 import fr.polytech.jydet.td5.beans.BookGenre;
@@ -21,7 +21,7 @@ import java.util.Set;
         name = "BookController",
         urlPatterns = "/libraryHome"
 )
-public class BookControllerServlet extends HttpServlet {
+public class BookController extends HttpServlet {
 
     public BookService bookService;
 
@@ -37,12 +37,6 @@ public class BookControllerServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //TODO filter
-//
-//        if (/* authentificated ?*/ false) {
-//
-//        } else {
-
         try {
             String[] genres = req.getParameterValues("genre");
             Set<BookGenre> selectedGenre = null;

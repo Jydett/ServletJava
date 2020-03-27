@@ -1,4 +1,4 @@
-package fr.polytech.jydet.td2.utils;
+package fr.polytech.jydet.utils;
 
 public class FormBuilder {
 

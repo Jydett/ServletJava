@@ -11,7 +11,7 @@ import javax.persistence.*;
 public class Book {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Embedded
+    @Enumerated(EnumType.STRING)
     private BookGenre genre;
     private String author;
     private String title;

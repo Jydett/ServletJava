@@ -1,9 +1,8 @@
-package fr.polytech.jydet.td5;
+package fr.polytech.jydet.td5.controller;
 
 import fr.polytech.jydet.td5.initializer.ControllerInitializer;
 import fr.polytech.jydet.td5.service.TimeShifterService;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
