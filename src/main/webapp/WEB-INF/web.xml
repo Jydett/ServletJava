@@ -1,8 +1,11 @@
 <!DOCTYPE web-app PUBLIC
  "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
+ "http://java.sun.com/dtd/web-app_2_3.dtd">
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  <listener>
+    <listener-class>fr.polytech.jydet.td5.initializer.ControllerInitializer</listener-class>
+  </listener>
   <servlet>
     <servlet-name>ConnectionServlet</servlet-name>
     <servlet-class>fr.polytech.jydet.td2.ConnectionServlet</servlet-class>
@@ -16,8 +19,130 @@
     </init-param>
   </servlet>
 
+  <servlet>
+    <servlet-name>tab1</servlet-name>
+    <jsp-file>/td3/tableau1.jsp</jsp-file>
+  </servlet>
+
+  <servlet>
+    <servlet-name>tab2</servlet-name>
+    <jsp-file>/td3/tableau2.jsp</jsp-file>
+  </servlet>
+
+  <servlet>
+    <servlet-name>randomColor</servlet-name>
+    <jsp-file>/td3/randomColor.jsp</jsp-file>
+  </servlet>
+
+  <servlet>
+    <servlet-name>headerInclude</servlet-name>
+    <jsp-file>/td3/headerInclude.jsp</jsp-file>
+  </servlet>
+
+  <servlet>
+    <servlet-name>game</servlet-name>
+    <jsp-file>/td3/game.jsp</jsp-file>
+  </servlet>
+
+  <servlet>
+    <servlet-name>gameResult</servlet-name>
+    <jsp-file>/td3/gameResult.jsp</jsp-file>
+  </servlet>
+
+  <servlet>
+    <servlet-name>productChooser_</servlet-name>
+    <jsp-file>/td4/productChooser.jsp</jsp-file>
+  </servlet>
+
+  <servlet>
+    <servlet-name>bingint</servlet-name>
+    <jsp-file>/td4/bingint.jsp</jsp-file>
+  </servlet>
+
+  <servlet>
+    <servlet-name>signature</servlet-name>
+    <jsp-file>/td4/signature1.jsp</jsp-file>
+  </servlet>
+
+  <servlet>
+    <servlet-name>signatureBis</servlet-name>
+    <jsp-file>/td4/signature2.jsp</jsp-file>
+  </servlet>
+
+  <servlet>
+    <servlet-name>colorChooser</servlet-name>
+    <jsp-file>/td4/colorChooser.html</jsp-file>
+  </servlet>
+
+  <servlet>
+    <servlet-name>colorResult</servlet-name>
+    <jsp-file>/td4/colorResult.jsp</jsp-file>
+  </servlet>
+
+
   <servlet-mapping>
     <servlet-name>ConnectionServlet</servlet-name>
     <url-pattern>/login</url-pattern>
   </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>tab1</servlet-name>
+    <url-pattern>/tab1</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>tab2</servlet-name>
+    <url-pattern>/tab2</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>randomColor</servlet-name>
+    <url-pattern>/randomColor</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>headerInclude</servlet-name>
+    <url-pattern>/headerInclude</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>game</servlet-name>
+    <url-pattern>/game</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>gameResult</servlet-name>
+    <url-pattern>/gameResult</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>productChooser_</servlet-name>
+    <url-pattern>/productChooser</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>bingint</servlet-name>
+    <url-pattern>/bingint</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>signature</servlet-name>
+    <url-pattern>/signature</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>signatureBis</servlet-name>
+    <url-pattern>/signatureBis</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>colorChooser</servlet-name>
+    <url-pattern>/colorChooser</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>colorResult</servlet-name>
+    <url-pattern>/colorResult</url-pattern>
+  </servlet-mapping>
+
 </web-app>

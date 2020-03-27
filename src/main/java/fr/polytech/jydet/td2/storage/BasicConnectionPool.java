@@ -1,4 +1,4 @@
-package fr.polytech.jydet.storage;
+package fr.polytech.jydet.td2.storage;
 
 import lombok.RequiredArgsConstructor;
 

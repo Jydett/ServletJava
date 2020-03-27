@@ -1,7 +1,7 @@
 package fr.polytech.jydet.td2;
 
-import fr.polytech.jydet.storage.BasicConnectionPool;
-import fr.polytech.jydet.td2.utils.FormBuilder;
+import fr.polytech.jydet.td2.storage.BasicConnectionPool;
+import fr.polytech.jydet.utils.FormBuilder;
 import fr.polytech.jydet.utils.ServletUtils;
 
 import javax.servlet.ServletConfig;
