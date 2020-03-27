@@ -16,7 +16,7 @@ import java.io.IOException;
         name = "Loan",
         urlPatterns = "/libraryLoan"
 )
-public class LoanController extends HttpServlet {//TODO filter
+public class LoanController extends HttpServlet {
 
     private LoanService loanService;
 
@@ -61,7 +61,6 @@ public class LoanController extends HttpServlet {//TODO filter
         if ("loan".equals(action)) {
             String bookIdStr = req.getParameter("bookId");
             String loanTimeStr = req.getParameter("loanTime");
-            //TODO verifier ca
             int loanTime;
             long bookId;
             try {
