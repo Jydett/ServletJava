@@ -1,14 +1,12 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page import="fr.polytech.jydet.td5.beans.BookGenre" %>
-<%@ page import="java.util.HashSet" %>
-<%@ page import="java.util.Arrays" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <div>
-    <%
-        Object error = request.getAttribute("error");
-        if (error != null) {
-            out.println("<div style:color=red;>Erreur: " + error + "</div>");
-        }
-    %>
+    <c:if test="${requestScope.error != null}">
+        <div style="color: red;">Erreur: ${requestScope.error}</div>
+    </c:if>
+
     <form action="/libraryHome">
         <label for="genre-chooser">Choisisser un ou plusieurs genres :
             <span class="tooltip">?
@@ -20,18 +18,20 @@
             </span></label>
         <select name="genre" id="genre-chooser" multiple>
             <option name="none" disabled>-- Choisisez un ou plusieurs genre --</option>
-            <%
-                String[] oldParams = request.getParameterValues("genre");
-                HashSet<String> selectedGenre;
-                if (oldParams != null) {
-                    selectedGenre = new HashSet<>(Arrays.asList(oldParams));
-                } else {
-                    selectedGenre = new HashSet<>();
-                }
-                for (BookGenre value : BookGenre.values()) {
-                    out.println("<option name='"+ value.name() + "' " +(selectedGenre.contains(value.name()) ? "selected" : "") + ">" + value.name() + "</option>");
-                }
-            %>
+            <c:set var="allGenre" value="<%= BookGenre.values() %>"/>
+            <c:choose>
+                <c:when test="${empty paramValues.genre}">
+                    <c:forEach items="${allGenre}" var="value">
+                        <option name="${value}"> ${value} </option>
+                    </c:forEach>
+                </c:when>
+                <c:otherwise>
+                    <c:set var="oldGenre" value="${fn:join(paramValues.genre, '')}"/>
+                    <c:forEach items="${allGenre}" var="value">
+                        <option name="${value}" ${fn:contains(oldGenre, value.name) ? 'selected' : ''}> ${value} </option>
+                    </c:forEach>
+                </c:otherwise>
+            </c:choose>
         </select>
         <div>
             <label for="title-search">Titre (Expression régulière):
@@ -40,11 +40,9 @@
             </span>
             </label>
             <input type="text" id="title-search" name="title"
-                <%
-                String title = request.getParameter("title");
-                if (title != null && !title.isEmpty())
-                    out.println("value='" + title + "'");
-            %>
+                <c:if test="${not empty paramValues.title}">
+                    value='${paramValues.title[0]}'
+                </c:if>
             >
         </div>
         <div>
@@ -54,20 +52,19 @@
             </span>
             </label>
             <input type="text" id="author-search" name="author"
-                <%
-                    String author = request.getParameter("author");
-                    if (author != null && !author.isEmpty())
-                        out.println("value='" + author + "'");
-                %>
+                <c:if test="${not empty paramValues.author}">
+                    value='${paramValues.author[0]}'
+                </c:if>
             >
         </div>
         <div>
             <label for="onlyAvailable">Uniquement les livres disponible</label>
             <input type="checkbox" id="onlyAvailable" name="onlyAvailable"
-                <%
-                    if ("on".equals(request.getParameter("onlyAvailable")))
-                        out.println("checked");
-                %>
+                <c:if test="${not empty paramValues.onlyAvailable}">
+                    <c:if test="${'on' == paramValues.onlyAvailable[0]}">
+                        checked
+                    </c:if>
+                </c:if>
             >
         </div>
         <div><input type="submit" value="Search !"></div>

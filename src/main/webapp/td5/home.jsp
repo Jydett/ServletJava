@@ -1,48 +1,46 @@
-<%@ page import="fr.polytech.jydet.td5.beans.Book" %>
-<%@ page import="java.util.List" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8"%>
 <html>
 <head>
     <title>Home</title>
 </head>
 <body style="width: 50%;margin: auto; padding-top: 100px">
     <jsp:include page="login.jsp"/>
-    <%
-        boolean connected = session.getAttribute("connected") != null;
-        if (connected) {
-            out.print("<a href=\"/libraryLoan\">Mes emprunts</a>");
-        }
-    %>
-
-<%--    <a href="/td5/login.jsp">Login</a>--%>
+    
+    <c:if test="${sessionScope.connected != null}">
+        <a href="/libraryLoan">Mes emprunts</a>
+    </c:if>
 
     <jsp:include page="filters.jsp"/>
 
     <h2>Les livres de la bibliothèques :</h2>
-<%--    <jsp:include page="../debug/debugger.jsp"/>--%>
 
-
-    <%
-        Object books = request.getAttribute("books");
-        if (books != null && books instanceof List) {
-            if (((List<Book>) books).isEmpty()) {
-                out.println("Pas de résultat !");
-            } else {
-                for (Book b : (List<Book>) books) {
-                    out.println("<form action='/libraryLoan' method='post'>");
-                    out.print("<p><b>" +b.getGenre().name() + "</b> " + b.getTitle() + " <u>par " + b.getAuthor() + "</u> ("+ b.getInventoryItemCount() + " ex. dispo)</b>");
-                    if (connected) {
-                        if (b.getInventoryItemCount() > 0) {
-                            out.println(" <button formaction='/libraryLoan?action=choose&bookId=" + b.getId() + "'>Emprunter ce livre</button>");
-                        } else {
-                            out.println(" <button disabled>Rupture de stock ! </button>");
-                        }
-                    }
-                    out.print("</p></form>");
-                }
-            }
-        }
-    %>
+    <c:if test="${requestScope.books != null}">
+        <jsp:useBean id="books" type="java.util.List" scope="request"/>
+        <c:choose>
+            <c:when test="${empty books}">
+                Pas de résultat !
+            </c:when>
+            <c:otherwise>
+                <form action="/libraryLoan" method="post">
+                    <c:forEach items="${books}" var="book">
+                        <p><b>${book.genre}</b> ${book.title} <u>par ${book.author}</u> (${book.inventoryItemCount} ex. dispo)</b>
+                            <c:if test="${sessionScope.connected != null}">
+                                <c:choose>
+                                    <c:when test="${book.inventoryItemCount > 0}">
+                                        <button formaction='/libraryLoan?action=choose&bookId=${book.id}'>Emprunter ce livre</button>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <button disabled>Rupture de stock ! </button>
+                                    </c:otherwise>
+                                </c:choose>
+                            </c:if>
+                        </p>
+                    </c:forEach>
+                </form>
+            </c:otherwise>
+        </c:choose>
+    </c:if>
 
     <jsp:include page="timeShifter.jsp"/>
 

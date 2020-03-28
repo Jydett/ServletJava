@@ -5,5 +5,9 @@ public enum BookGenre {
     POLICIER,
     ROMANCE,
     SF,
-    AVENTURE
+    AVENTURE;
+
+    public String getName() {
+        return name();
+    }
 }

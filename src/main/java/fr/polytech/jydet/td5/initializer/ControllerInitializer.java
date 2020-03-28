@@ -29,7 +29,7 @@ public class ControllerInitializer {
         HASHMAP, MYSQL
     }
 
-    private static final DateBaseImpl INITIALIZER_TYPE = DateBaseImpl.MYSQL;
+    private static final DateBaseImpl INITIALIZER_TYPE = DateBaseImpl.HASHMAP;
 
     private static final BookDao bookDao;
     private static final UserDao userDao;
@@ -68,6 +68,7 @@ public class ControllerInitializer {
         }
         if (userDao.getAll().isEmpty()) {
             userDao.save(new User("admin", "admin"));
+            userDao.save(new User("jydet", "jydet"));
         }
         if (loanDao.getAll().isEmpty()) {
             Book book = bookDao.getAll().stream().findFirst().get();
