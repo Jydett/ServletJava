@@ -5,6 +5,11 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+import java.time.temporal.ChronoUnit;
 
 @Data
 @Entity
@@ -24,5 +29,13 @@ public class Loan {
         this.duration = duration;
         this.user = user;
         this.book = book;
+    }
+
+    public boolean isLate() {
+        return startingInstant.plus(duration, ChronoUnit.DAYS).isAfter(Instant.now());
+    }
+
+    public String getFormattedDate() {
+        return LocalDateTime.ofInstant(startingInstant, ZoneId.systemDefault()).toLocalDate().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT));
     }
 }
