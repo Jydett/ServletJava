@@ -15,7 +15,7 @@
         </c:when>
         <c:otherwise>
             <jsp:useBean id="connected" scope="session" class="fr.polytech.jydet.td5.beans.User"/>
-            <span> Connecté en tant qu${fn:indexOf("aeiouhy", fn:substring(connected.username, 0, 1)) < 0 ? 'e ' : '\''} <b>${sessionScope.username}</b>
+            <span> Connecté en tant qu${fn:indexOf("aeiouhy", fn:substring(connected.username, 0, 1)) < 0 ? 'e ' : '\''} <b>${sessionScope.connected.username}</b>
                 <form style="display: inline" method="post" action="/libraryLogin">
                     <input type="hidden" name="action" value="logout"/>
                     <input type="submit" value="Se déconnecter"/>

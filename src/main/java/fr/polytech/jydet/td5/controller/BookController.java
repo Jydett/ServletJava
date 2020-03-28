@@ -32,11 +32,6 @@ public class BookController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        doGet(req, resp);
-    }
-
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
             String[] genres = req.getParameterValues("genre");
             Set<BookGenre> selectedGenre = null;

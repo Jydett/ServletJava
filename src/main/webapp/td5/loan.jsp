@@ -6,7 +6,7 @@
 </head>
 <body style="width: 50%;margin: auto; padding-top: 100px">
     <jsp:include page="login.jsp"/>
-    <a href="/libraryHome">Retour</a>
+    <a href="/td5/home.jsp">Retour</a>
     <h2>Mes emprunts</h2>
     <div>
 

@@ -30,10 +30,10 @@ public class TimeShifterController extends HttpServlet {
                 int dayPassed = Integer.parseInt(dayPassedStr);
                 timeShifterService.shiftTime(dayPassed);
             } catch (NumberFormatException e) {
-                resp.sendRedirect("/libraryHome?TSError=Formulaire%20Invalide");
+                resp.sendRedirect("/td5/home.jsp?TSError=Formulaire%20Invalide");
                 return;
             }
         }
-        resp.sendRedirect("/libraryHome?TSStatus=Date%20recul%C3%A9e");
+        resp.sendRedirect("/td5/home.jsp?TSStatus=Date%20recul%C3%A9e");
     }
 }

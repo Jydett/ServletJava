@@ -41,7 +41,7 @@
             </c:otherwise>
         </c:choose>
     </c:if>
-
+    <br/>
     <jsp:include page="timeShifter.jsp"/>
 
 </body>

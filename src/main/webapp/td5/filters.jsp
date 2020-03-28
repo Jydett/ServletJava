@@ -7,7 +7,7 @@
         <div style="color: red;">Erreur: ${requestScope.error}</div>
     </c:if>
 
-    <form action="/libraryHome">
+    <form action="/libraryHome" method="post">
         <label for="genre-chooser">Choisisser un ou plusieurs genres :
             <span class="tooltip">?
                 <span class="tooltiptext">

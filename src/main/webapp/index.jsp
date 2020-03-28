@@ -41,7 +41,7 @@
     </table>
     <h3>TD 5</h3>
     <table>
-        <tr><td><a href="/libraryHome">Library</a></td></tr>
+        <tr><td><a href="/td5/home.jsp">Library</a></td></tr>
     </table>
 </body>
 <style>

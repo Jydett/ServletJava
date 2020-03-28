@@ -32,7 +32,7 @@ public class Loan {
     }
 
     public boolean isLate() {
-        return startingInstant.plus(duration, ChronoUnit.DAYS).isAfter(Instant.now());
+        return startingInstant.plus(duration, ChronoUnit.DAYS).isBefore(Instant.now());
     }
 
     public String getFormattedDate() {
